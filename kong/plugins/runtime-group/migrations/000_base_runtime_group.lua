@@ -19,6 +19,8 @@ return {
       ]],
     },
     cassandra = {
-        up = nil
+        up = [[
+            
+        ]]
     }
 }
