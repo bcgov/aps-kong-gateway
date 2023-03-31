@@ -18,6 +18,7 @@ return {
         END$$;
       ]],
     },
+
     cassandra = {
         up = [[
             CREATE TABLE IF NOT EXISTS runtime_groups (
@@ -28,5 +29,5 @@ return {
         
               CREATE INDEX IF NOT EXISTS ON runtime_groups (name);
         ]],
-    }
+    },
 }
