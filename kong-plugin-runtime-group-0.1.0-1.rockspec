@@ -35,6 +35,6 @@ build = {
     ["kong.plugins."..plugin_name..".schema"] = "kong/plugins/"..plugin_name.."/schema.lua",
     ["kong.plugins."..plugin_name..".daos"] = "kong/plugins/"..plugin_name.."/daos.lua",
     ["kong.plugins."..plugin_name..".migrations.init"] = "kong/plugins/"..plugin_name.."/migrations/init.lua",
-    ["kong.plugins."..plugin_name..".migrations.base"] = "kong/plugins/"..plugin_name.."/migrations/000_base_runtime_group.lua",
+    ["kong.plugins."..plugin_name..".migrations.000_base_runtime_group"] = "kong/plugins/"..plugin_name.."/migrations/000_base_runtime_group.lua",
   }
 }
