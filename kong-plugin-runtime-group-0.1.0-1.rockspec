@@ -34,7 +34,7 @@ build = {
     ["kong.plugins."..plugin_name..".handler"] = "kong/plugins/"..plugin_name.."/handler.lua",
     ["kong.plugins."..plugin_name..".schema"] = "kong/plugins/"..plugin_name.."/schema.lua",
     ["kong.plugins."..plugin_name..".daos"] = "kong/plugins/"..plugin_name.."/daos.lua",
-    ["kong.plugins."..plugin_name..".migrations.init"] = "kong/plugins/bcgov-gwa-endpoint/migrations/init.lua",
-    ["kong.plugins."..plugin_name..".migrations.base"] = "kong/plugins/bcgov-gwa-endpoint/migrations/000_base_runtime_group.lua",
+    ["kong.plugins."..plugin_name..".migrations.init"] = "kong/plugins/"..plugin_name.."/migrations/init.lua",
+    ["kong.plugins."..plugin_name..".migrations.base"] = "kong/plugins/"..plugin_name.."/migrations/000_base_runtime_group.lua",
   }
 }
