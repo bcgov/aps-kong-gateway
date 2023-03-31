@@ -8,8 +8,6 @@ git clone https://github.com/Kong/kong-pongo.git
 git checkout 2.5.0
 mkdir -p ~/.local/bin
 ln -s $(realpath kong-pongo/pongo.sh) ~/.local/bin/pongo
-
-ln -s $(realpath kong-pongo/pongo.sh) ~/.local/bin/pongo
 ```
 
 ```
