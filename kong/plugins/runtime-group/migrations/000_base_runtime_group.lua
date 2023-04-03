@@ -4,11 +4,11 @@ return {
         CREATE TABLE IF NOT EXISTS "runtime_groups" (
           "id"                 UUID PRIMARY KEY,
           "created_at"         TIMESTAMP WITHOUT TIME ZONE,
-          "name"               TEXT,
+          "name"               TEXT NOT NULL,
           "namespaces"         TEXT[],
-          "features"           TEXT[],
-          "hosts"              TEXT[],
-          "acme_account_email" TEXT
+          "acme_plugin" JSONB NOT NULL,
+          "prom_plugin" JSONB NOT NULL,
+          "logs_plugin" JSONB NOT NULL
         );
   
         DO $$

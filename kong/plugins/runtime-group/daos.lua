@@ -1,5 +1,12 @@
 local typedefs = require "kong.db.schema.typedefs"
 
+local acme_schema = require "kong.plugins.acme.schema"
+local prometheus_schema = require "kong.plugins.prometheus.schema"
+local httplog_schema = require "kong.plugins.http-log.schema"
+
+local service = require "kong.db.schema.entities.services"
+local route = require "kong.db.schema.entities.routes"
+
 return {
   {
     ttl = false,
@@ -14,10 +21,20 @@ return {
       { id = typedefs.uuid },
       { created_at = typedefs.auto_timestamp_s },
       { name = { type = "string", required = true, unique = true }, },
-      { features = { type = "array", elements = { type = "string" } } },
       { namespaces = { type = "array", elements = { type = "string" } } },
-      { hosts = { type = "array", elements = { type = "string" } } },
-      { acme_account_email = { type = "string" } },
+      { acme_plugin = { type = "record", required = false, fields = {
+        { plugin = { type = "record", fields = acme_schema.fields } },
+        { service = { type = "record", fields = service.fields }},
+        { route = { type = "record", fields = route.fields }},
+      } } },
+      { prom_plugin = { type = "record", fields = {
+        { plugin = { type = "record", fields = prometheus_schema.fields }},
+        { service = { type = "record", required = false, fields = service.fields }},
+        { route = { type = "record", required = false, fields = route.fields }},
+      } } },
+      { logs_plugin = { type = "record", fields = {
+        { plugin = { type = "record", fields = httplog_schema.fields }},
+      } } },
     },
   },
 }

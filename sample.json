@@ -1,0 +1,108 @@
+{
+  "name": "sample-runtime-group",
+  "namespaces": ["sprint-17", "clouddp-gcp"],
+  "prom_plugin": {
+    "plugin": {},
+    "service": {
+      "id": "897f748b-80c1-476d-9b7c-63fd0f647e3b",
+      "name": "prometheus-metrics",
+      "host": "127.0.0.1",
+      "port": 8100,
+      "protocol": "http",
+      "enabled": true
+    },
+    "route": {
+      "id": "5ca67cf9-af4f-471e-8018-187014a8d1cf",
+      "name": "prometheus-metrics",
+      "methods": ["GET"],
+      "paths": ["/metrics"],
+      "protocols": ["http", "https"],
+      "service": { "id": "897f748b-80c1-476d-9b7c-63fd0f647e3b" },
+      "path_handling": "v0",
+      "hosts": null,
+      "headers": null,
+      "strip_path": false,
+      "request_buffering": true,
+      "response_buffering": true,
+      "preserve_host": false
+    }
+  },
+  "logs_plugin": {
+    "plugin": {
+      "protocols": ["https"],
+      "config": {
+        "flush_timeout": 10,
+        "http_endpoint": "https://fluentd-aggr-b8840c-dev.apps.gold.devops.gov.bc.ca",
+        "retry_count": 5,
+        "timeout": 10000,
+        "queue_size": 100,
+        "keepalive": 60000,
+        "content_type": "application/json",
+        "method": "POST"
+      }
+    }
+  },
+  "acme_plugin": {
+    "plugin": {
+      "config": {
+        "account_email": "aidan.cope+apspoc@gmail.com",
+        "api_uri": "https://acme-v02.api.letsencrypt.org/directory",
+        "cert_type": "rsa",
+        "domains": [
+          "ministryofpuppiesandkittens.site",
+          "api.ministryofpuppiesandkittens.site"
+        ],
+        "eab_hmac_key": null,
+        "eab_kid": null,
+        "fail_backoff_minutes": 1,
+        "renew_threshold_days": 14,
+        "storage": "redis",
+        "storage_config": {
+          "consul": {
+            "host": null,
+            "https": false,
+            "kv_path": null,
+            "port": null,
+            "timeout": null,
+            "token": null
+          },
+          "kong": {},
+          "redis": {
+            "auth": "s3cr3t",
+            "host": "redis-ssl-master",
+            "port": 6379
+          },
+          "shm": {
+            "shm_name": "kong"
+          },
+          "vault": {
+            "host": null,
+            "https": false,
+            "kv_path": null,
+            "port": null,
+            "timeout": null,
+            "tls_server_name": null,
+            "tls_verify": true,
+            "token": null
+          }
+        },
+        "tos_accepted": true
+      },
+      "protocols": ["https", "http"]
+    },
+    "service": {
+      "name": "acme-challenge",
+      "host": "127.0.0.1",
+      "port": 65535,
+      "protocol": "http"
+    },
+    "route": {
+      "name": "acme-challenge",
+      "paths": ["/.well-known/acme-challenge"],
+      "hosts": [
+        "ministryofpuppiesandkittens.site",
+        "api.ministryofpuppiesandkittens.site"
+      ]
+    }
+  }
+}
