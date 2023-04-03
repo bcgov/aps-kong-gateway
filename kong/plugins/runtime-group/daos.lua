@@ -15,7 +15,9 @@ return {
       { created_at = typedefs.auto_timestamp_s },
       { name = { type = "string", required = true, unique = true }, },
       { features = { type = "array", elements = { type = "string" } } },
-      { hosts = { type = "array", elements = { type = "string" } } }
+      { namespaces = { type = "array", elements = { type = "string" } } },
+      { hosts = { type = "array", elements = { type = "string" } } },
+      { acme_account_email = { type = "string" } },
     },
   },
 }
