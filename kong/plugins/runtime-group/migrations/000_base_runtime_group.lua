@@ -20,7 +20,4 @@ return {
         END$$;
       ]],
     },
-    cassandra = {
-        up = [[]]
-    }
 }
